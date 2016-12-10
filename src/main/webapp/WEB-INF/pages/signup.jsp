@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Sign Up</title>
     <meta name="viewport" content="width=device-width, maximum-scale=1.0"/>
-    <meta name="description" content="TextArea.com, a place for people to read and write."/>
-    <meta name="keywords" content="textarea,textarea.com,blog,博客,空间,主页,个人主页,">
+    <meta name="description" content="sharefun.com"/>
+    <meta name="keywords" content="sharefun">
     <link href="https://www.textarea.com/signup/" rel="canonical"/>
     <link rel="alternate" type="application/atom+xml" href="/atom.xml"/>
     <link rel="shortcut icon" type="image/png" sizes="any"
@@ -73,7 +73,7 @@
         </nav>
     </header>
     <div id="container" class="signup">
-        <h1 class="text-center">TextArea</h1>
+        <h1 class="text-center">sharefun</h1>
         <div id="signup">
             <form method="post" action="/checkemail/" data-toggle="validator">
                 <input type="hidden" name="_xsrf" value="2|ca694757|a42e1477981b002440af5e0265eec329|1481318833"/>

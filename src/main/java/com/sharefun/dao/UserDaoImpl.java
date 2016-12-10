@@ -34,15 +34,6 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-
-//    public boolean checkEmailAddress(String emailAddress, String passWord) {
-//        String SQL = "select * from user where emailAddress = ?";
-//        User user = jdbcTemplateObject.queryForObject(SQL, new Object[]{emailAddress}, new UserMapper());
-//        String psw_valid = user.getPassWord();
-//        return passWord.equals(psw_valid);
-//    }
-
-
     @Override
     public boolean checkEmailAddress(String userName, String emailAddress, String passWord) {
         String SQL = "select * from user where emailAddress = ?";

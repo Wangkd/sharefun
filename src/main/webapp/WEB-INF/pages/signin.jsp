@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Sign In</title>
     <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
-    <meta name="description" content="TextArea.com, a place for people to read and write." />
-    <meta name="keywords" content="textarea,textarea.com,blog,博客,空间,主页,个人主页,">
+    <meta name="description" content="sharefun" />
+    <meta name="keywords" content="sharefun">
 
     <link href="https://www.textarea.com/signin/?language=en" rel="canonical" />
 
@@ -74,7 +74,7 @@
     </nav>
     </header>
     <div id="container">
-        <h1 class="text-center">TextArea</h1>
+        <h1 class="text-center">sharefun</h1>
         <div id="signin">
             <form method="post" action="/checkUser/" class="clearfix" style="margin: 0 auto;">
                 <input type="hidden" name="_xsrf" value="2|ce68fc5c|a02faf7c9c1abb2f44aee50961ef7822|1481318833"/>
@@ -90,6 +90,7 @@
                                placeholder="Password"
                         >
                     </div>
+                    ${error}
                 </div>
                 <div>
                     <button class="btn btn-primary">Sign In</button>
