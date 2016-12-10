@@ -21,8 +21,8 @@
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/myBlog "></property>
-        <property name="username" value="" />
+        <property name="url" value="jdbc:mysql://localhost:3306/sharefun "></property>
+        <property name="username" value="root" />
         <property name="password" value="" />
     </bean>
 
@@ -33,7 +33,11 @@
     <bean id = "userDao" class = "com.sharefun.dao.UserDaoImpl" parent="jdbctemplate"></bean>
 
     <bean id = "loginController" class = "com.sharefun.controller.LoginController">
-        <property name="userDao"  ref = "userDao"></property>
+        <property name="userDao"  ref = "userDao"/>
+    </bean>
+
+    <bean id="signUpController" class = "com.sharefun.controller.SignUpController">
+        <property name="userDao" ref="userDao"/>
     </bean>
 </beans>
 

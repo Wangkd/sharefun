@@ -19,11 +19,11 @@
     <![endif]-->
 </head>
 <body>
-<h1>这里是SpringMVC Demo首页</h1>
-<form>
-    <input >
-</form>
-
+<h1>Sharefun 首页</h1>
+<ul>
+    <li class="signin"><a href="/signin/" class="btn btn-default">Sign in</a></li>
+    <li class="signup"><a href="/signup/" class="btn btn-primary">Sign up</a></li>
+</ul>
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 
