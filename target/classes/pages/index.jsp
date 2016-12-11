@@ -20,9 +20,12 @@
 </head>
 <body>
 <h1>Sharefun 首页</h1>
+<h2>welcome, ${user.getUserName()}</h2>
 <ul>
     <li class="signin"><a href="/signin/" class="btn btn-default">Sign in</a></li>
     <li class="signup"><a href="/signup/" class="btn btn-primary">Sign up</a></li>
+    <li class="signup"><a href="/signout" class="btn btn-primary">Sign out</a></li>
+    <li class="signin"><a href="/user" class = "btn btn-primary">UserInfo</a></li>
 </ul>
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>

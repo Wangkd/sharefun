@@ -22,6 +22,14 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public User getUser(String emailAddress) {
+        String SQL = "select * from user where emailAddress = ?";
+        User user = jdbcTemplateObject.queryForObject(SQL,
+                new Object[]{emailAddress}, new UserMapper());
+        return user;
+    }
+
+    @Override
     public boolean checkUser(String emailAddress, String passWord) {
         String SQL = "select * from user where emailAddress = ?";
         try {
