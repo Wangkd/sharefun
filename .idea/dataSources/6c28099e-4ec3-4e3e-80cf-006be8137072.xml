@@ -7,35 +7,124 @@
       <Visible>1</Visible>
     </schema>
     <schema id="3" parent="1" name="information_schema"/>
-    <schema id="4" parent="1" name="myBlog"/>
-    <schema id="5" parent="1" name="mysql"/>
-    <schema id="6" parent="1" name="performance_schema"/>
-    <schema id="7" parent="1" name="sys"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="test"/>
+    <table id="7" parent="2" name="blog"/>
     <table id="8" parent="2" name="user"/>
-    <column id="9" parent="8" name="user_id">
+    <table id="9" parent="2" name="user_blog_star"/>
+    <column id="10" parent="7" name="blog_id">
       <Position>1</Position>
-      <DataType>int(100)|0</DataType>
+      <DataType>int(11) unsigned|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="10" parent="8" name="username">
+    <column id="11" parent="7" name="blog_title">
       <Position>2</Position>
-      <DataType>char(10)|0</DataType>
+      <DataType>varchar(40)|0</DataType>
       <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="11" parent="8" name="emailaddress">
+    <column id="12" parent="7" name="blog_content">
       <Position>3</Position>
-      <DataType>varchar(50)|0</DataType>
-      <NotNull>1</NotNull>
+      <DataType>text|0</DataType>
     </column>
-    <column id="12" parent="8" name="password">
+    <column id="13" parent="7" name="user_fk">
       <Position>4</Position>
-      <DataType>varchar(50)|0</DataType>
+      <DataType>int(11) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="13" parent="8" name="PRIMARY">
+    <column id="14" parent="7" name="user_stared_fk">
+      <Position>5</Position>
+      <DataType>int(11) unsigned|0</DataType>
+    </column>
+    <index id="15" parent="7" name="user_fk">
+      <ColNames>user_fk</ColNames>
+    </index>
+    <index id="16" parent="7" name="user_stared_fk">
+      <ColNames>user_stared_fk</ColNames>
+    </index>
+    <key id="17" parent="7" name="PRIMARY">
+      <ColNames>blog_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="18" parent="7" name="user_fk">
+      <ColNames>user_fk</ColNames>
+      <RefSchemaName>sharefun</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>user_id</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="19" parent="8" name="user_id">
+      <Position>1</Position>
+      <DataType>int(11) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="20" parent="8" name="username">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="21" parent="8" name="emailaddress">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="22" parent="8" name="password">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <key id="23" parent="8" name="PRIMARY">
       <ColNames>user_id</ColNames>
       <Primary>1</Primary>
     </key>
+    <column id="24" parent="9" name="ubs_id">
+      <Position>1</Position>
+      <DataType>int(11) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="25" parent="9" name="bid">
+      <Position>2</Position>
+      <DataType>int(11) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="9" name="uid">
+      <Position>3</Position>
+      <DataType>int(11) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="27" parent="9" name="blog_fk2">
+      <ColNames>bid</ColNames>
+    </index>
+    <index id="28" parent="9" name="user_fk1">
+      <ColNames>uid</ColNames>
+    </index>
+    <key id="29" parent="9" name="PRIMARY">
+      <ColNames>ubs_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="30" parent="9" name="blog_fk2">
+      <ColNames>bid</ColNames>
+      <RefSchemaName>sharefun</RefSchemaName>
+      <RefTableName>blog</RefTableName>
+      <RefColNames>blog_id</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <foreign-key id="31" parent="9" name="user_fk1">
+      <ColNames>uid</ColNames>
+      <RefSchemaName>sharefun</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>user_id</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
   </database-model>
 </dataSource>

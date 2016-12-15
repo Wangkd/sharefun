@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,15 +39,15 @@
     <script type="text/javascript">
         function remove() {
             var userName = document.getElementById("session").getAttribute("value");
-            if(userName == ""){
+            if (userName == "") {
                 var elements = document.getElementsByClassName("userinfo");
-                for(var i = 0; i < elements.length ; i ++){
+                for (var i = 0; i < elements.length; i++) {
                     elements[i].style.display = "none";
                 }
             }
-            else{
+            else {
                 var elements = document.getElementsByClassName("signin");
-                for(var i = 0; i < elements.length ; i ++){
+                for (var i = 0; i < elements.length; i++) {
                     elements[i].style.display = "none";
                 }
             }
@@ -54,7 +55,7 @@
     </script>
 </head>
 <body onload="remove()">
-<div id="wrapper" >
+<div id="wrapper">
 
     <header id="header" class=" no-print">
         <nav id="nav" class="clearfix">
@@ -70,11 +71,11 @@
             </div>
             <div class="pull-right">
                 <ul>
-                    <li class="signin" style="display: none" id = "session" value = "${user.getUserName()}"></li>
+                    <li class="signin" style="display: none" id="session" value="${user.getUserName()}"></li>
                     <li class="signin"><a href="/signin/" class="btn btn-default">Sign in</a></li>
                     <li class="signin"><a href="/signup/" class="btn btn-primary">Sign up</a></li>
                     <li class="userinfo"><a href="/signout" class="btn btn-primary">Sign out</a></li>
-                    <li class="userinfo"><a href="/user" class = "btn btn-primary">UserInfo</a></li>
+                    <li class="userinfo"><a href="/user" class="btn btn-primary">UserInfo</a></li>
                 </ul>
             </div>
         </nav>
@@ -104,6 +105,7 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
+            <c:forEach var="blog" items="${blogList}" >
             <article class="post summary card typography" lang="en"
                      itemscope itemtype="http://schema.org/Article">
 
@@ -157,15 +159,15 @@ F
 
                     <h2 class="card-title" itemprop="name headline">
 
-                        <a href="/foodandtrip/the-moroccan-tea-drinking-culture-557/" itemprop="url">The Moroccan Tea
-                            Drinking Culture</a>
+                        <a href="/foodandtrip/the-moroccan-tea-drinking-culture-557/" itemprop="url">
+                                ${blog.getBlogTitle()}
+                        </a>
                     </h2>
 
                     <div class="card-body" itemprop="description">
 
 
-                        <p>The culture of tea drinking varies from country to country, each of them unique and
-                            historical in their own respect. Most of these tea tradi...</p>
+                        <p>${blog.getBlogContent()}</p>
 
 
                         <p><a href="/foodandtrip/the-moroccan-tea-drinking-culture-557/" class="seemore">See More</a>
@@ -197,6 +199,7 @@ F
 
                 </div>
             </article>
+            </c:forEach>
         </main>
         <aside id="sidebar">
             <section class="card">

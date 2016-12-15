@@ -31,13 +31,16 @@
     </bean>
 
     <bean id = "userDao" class = "com.sharefun.dao.UserDaoImpl" parent="jdbctemplate"></bean>
-
+    <bean id="blogDao"  class="com.sharefun.dao.BlogDaoImpl"    parent="jdbctemplate"></bean>
     <bean id = "loginController" class = "com.sharefun.controller.LoginController">
         <property name="userDao"  ref = "userDao"/>
     </bean>
 
     <bean id="signUpController" class = "com.sharefun.controller.SignUpController">
         <property name="userDao" ref="userDao"/>
+    </bean>
+    <bean id="indexController" class="com.sharefun.controller.IndexController">
+        <property name="blogDao" ref="blogDao"/>
     </bean>
 </beans>
 
