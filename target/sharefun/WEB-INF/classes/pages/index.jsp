@@ -207,47 +207,11 @@ F
                     <small><a href="/tags/">more</a></small>
                 </h3>
                 <div style="margin:.2em;max-height:128px;overflow:hidden;">
+                    <c:forEach var="tag" items="${blogTags}" >
 
+                    <a href="/tags/306/" class="post-tag text-center">${tag.getTagTitle()}</a>
+                    </c:forEach>
 
-                    <a href="/tags/306/" class="post-tag text-center">古籍影印</a>
-
-                    <a href="/tags/302/" class="post-tag text-center">georgehotz</a>
-
-                    <a href="/tags/279/" class="post-tag text-center">something</a>
-
-                    <a href="/tags/278/" class="post-tag text-center">字画做旧</a>
-
-                    <a href="/tags/277/" class="post-tag text-center">ARM</a>
-
-                    <a href="/tags/275/" class="post-tag text-center">罗曼·罗兰</a>
-
-                    <a href="/tags/262/" class="post-tag text-center">ProxyChains</a>
-
-                    <a href="/tags/260/" class="post-tag text-center">碎碎念</a>
-
-                    <a href="/tags/249/" class="post-tag text-center">git</a>
-
-                    <a href="/tags/247/" class="post-tag text-center">佛教，华严宗</a>
-
-                    <a href="/tags/246/" class="post-tag text-center">13都是</a>
-
-                    <a href="/tags/242/" class="post-tag text-center">赢科英语</a>
-
-                    <a href="/tags/241/" class="post-tag text-center">coredump</a>
-
-                    <a href="/tags/236/" class="post-tag text-center">文字</a>
-
-                    <a href="/tags/235/" class="post-tag text-center">linux触控板</a>
-
-                    <a href="/tags/224/" class="post-tag text-center">test</a>
-
-                    <a href="/tags/221/" class="post-tag text-center">England</a>
-
-                    <a href="/tags/219/" class="post-tag text-center">成长日记</a>
-
-                    <a href="/tags/210/" class="post-tag text-center">爱情</a>
-
-                    <a href="/tags/207/" class="post-tag text-center">商都物语抄</a>
 
                 </div>
             </section>

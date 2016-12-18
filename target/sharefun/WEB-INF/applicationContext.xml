@@ -32,6 +32,7 @@
 
     <bean id = "userDao" class = "com.sharefun.dao.UserDaoImpl" parent="jdbctemplate"></bean>
     <bean id="blogDao"  class="com.sharefun.dao.BlogDaoImpl"    parent="jdbctemplate"></bean>
+    <bean id = "tagDao" class="com.sharefun.dao.TagDaoImpl" parent="jdbctemplate"></bean>
     <bean id = "loginController" class = "com.sharefun.controller.LoginController">
         <property name="userDao"  ref = "userDao"/>
     </bean>
@@ -41,6 +42,8 @@
     </bean>
     <bean id="indexController" class="com.sharefun.controller.IndexController">
         <property name="blogDao" ref="blogDao"/>
+        <property name="tagDao"  ref="tagDao" />
+        <property name="userDao" ref="userDao" />
     </bean>
 </beans>
 

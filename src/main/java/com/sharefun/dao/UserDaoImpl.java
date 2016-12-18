@@ -30,6 +30,19 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public void changeuserNameOrPassword(int userId, String userName, String passWord) {
+        String SQL = "update user set username = ?, passowrd = ? where user_id = ?";
+        jdbcTemplateObject.update(SQL,userName, passWord, userId);
+    }
+
+    @Override
+    public User getAuthorOfBlog(int blogId) {
+        String SQL = "select u.* from user u join blog b on u.user_id = b.user_fk where b.blog_id = ?";
+        User author = jdbcTemplateObject.queryForObject(SQL, new Object[]{blogId}, new UserMapper());
+        return author;
+    }
+
+    @Override
     public boolean checkUser(String emailAddress, String passWord) {
         String SQL = "select * from user where emailAddress = ?";
         try {
@@ -60,6 +73,13 @@ public class UserDaoImpl implements UserDao {
                      "values"+
                      "(?,?,?)";
         jdbcTemplateObject.update(SQL,userName,emailAddress,passWord);
+    }
+
+    @Override
+    public List<User> getUsersOfStaredBlog(int blogId) {
+        String SQL = "select u.* from user u join user_blog_star ub on u.user_id = ub.user_id where ub.blog_id = ?";
+        List<User> users = jdbcTemplateObject.query(SQL, new Object[]{blogId}, new UserMapper());
+        return users;
     }
 }
 
