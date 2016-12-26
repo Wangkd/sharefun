@@ -76,6 +76,7 @@
                     <li class="signin"><a href="/signup/" class="btn btn-primary">Sign up</a></li>
                     <li class="userinfo"><a href="/signout" class="btn btn-primary">Sign out</a></li>
                     <li class="userinfo"><a href="/user" class="btn btn-primary">UserInfo</a></li>
+                    <li class="userinfo"><a href="/addblog" class="btn btn-primary">Add Blog</a></li>
                 </ul>
             </div>
         </nav>
@@ -159,7 +160,7 @@ F
 
                     <h2 class="card-title" itemprop="name headline">
 
-                        <a href="/foodandtrip/the-moroccan-tea-drinking-culture-557/" itemprop="url">
+                        <a href="/blog_detail?id=${blog.getBlogId()}" itemprop="url">
                                 ${blog.getBlogTitle()}
                         </a>
                     </h2>

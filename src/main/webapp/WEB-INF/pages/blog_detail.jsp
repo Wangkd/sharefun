@@ -23,5 +23,11 @@
 
     </tr>
 </c:forEach>
+<c:forEach var="picture" items="${pictures}">
+    <tr>
+        <td>${picture.getPicTitle()}</td>
+        <td><img src="<c:url value='${picture.getPicPath()}'/>"/></td>
+    </tr>
+</c:forEach>
 </body>
 </html>

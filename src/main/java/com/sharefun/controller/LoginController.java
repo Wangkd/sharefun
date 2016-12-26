@@ -36,7 +36,7 @@ public class LoginController {
     @RequestMapping(value = "/signout", method = RequestMethod.GET)
     public String signOut(SessionStatus status){
         status.setComplete();
-        return "index";
+        return "redirect:/";
     }
     @RequestMapping(value = "/checkUser", method = RequestMethod.POST)
     public ModelAndView checkUser(HttpServletRequest request){
@@ -45,10 +45,10 @@ public class LoginController {
         ModelAndView mav = new ModelAndView();
         if(userDao.checkUser(emailAddress,passWord)){
             mav.addObject("user", userDao.getUser(emailAddress));
-            mav.setViewName("index");
+            mav.setViewName("redirect:/");
         }else{
             mav.addObject("error", "用户名或者密码不匹配");
-            mav.setViewName("signin");
+            mav.setViewName("redirect: /signin");
         }
         return mav;
     }
