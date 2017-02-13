@@ -39,6 +39,27 @@ public class BlogDaoImpl implements BlogDao {
     }
 
     @Override
+    public void updateBlogClick(int blogId, int blogClick) {
+        String SQL = "update blog set article_click = ? where blog_id = ?";
+        jdbcTemplateObject.update(SQL, blogClick, blogId);
+    }
+
+    @Override
+    public void generateAbstract(int blogId, String blogContent) {
+        String abs = blogContent.substring(0, 50);
+        String res = abs.substring(0,abs.lastIndexOf(" ") - 1);
+        String SQL = "update blog set blog_abstract = ? where blog_id = ?";
+        jdbcTemplateObject.update(SQL, res, blogId);
+    }
+
+    @Override
+    public int getNumOfStars(int blogId) {
+        String SQL = "select count(*) from user_blog_star where blog_id = ?";
+        Integer count = jdbcTemplateObject.queryForObject(SQL, Integer.class, blogId);
+        return count;
+    }
+
+    @Override
     public Blog getBlog(int blogId) {
         String SQL = "select * from blog where blog_id = ?";
         Blog blog = jdbcTemplateObject.queryForObject(SQL, new Object[]{blogId}, new BlogMapper());

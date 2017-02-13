@@ -8,6 +8,11 @@ public class User {
     private String userName;
     private String emailAddress;
     private String passWord;
+    private String userAvatar;
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
+    }
 
     public void setUserId(int userId) {
         this.userId = userId;
@@ -39,5 +44,9 @@ public class User {
 
     public String getUserName() {
         return userName;
+    }
+
+    public String getUserAvatar() {
+        return userAvatar;
     }
 }

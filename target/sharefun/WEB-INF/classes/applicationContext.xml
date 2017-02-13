@@ -37,9 +37,28 @@
     <bean id="blogDao"  class="com.sharefun.dao.BlogDaoImpl"    parent="jdbctemplate"></bean>
     <bean id = "tagDao" class="com.sharefun.dao.TagDaoImpl" parent="jdbctemplate"></bean>
     <bean id = "picDao" class="com.sharefun.dao.PicDaoImpl" parent="jdbctemplate"></bean>
+    <bean id="blogCommentDao" class="com.sharefun.dao.BlogCommentDaoImpl" parent="jdbctemplate"></bean>
 
     <bean id="userController" class = "com.sharefun.controller.UserController">
         <property name="blogDao" ref="blogDao"/>
+        <property name="picDao"  ref="picDao" />
+        <property name="tagDao" ref="tagDao" />
+        <property name="userDao" ref="userDao" />
+        <property name="blogCommentDao" ref="blogCommentDao"/>
+    </bean>
+
+    <bean id="blogController" class="com.sharefun.controller.BlogController">
+        <property name="userDao" ref="userDao" />
+        <property name="blogDao" ref="blogDao" />
+        <property name="tagDao" ref="tagDao" />
+        <property name="picDao" ref="picDao" />
+    </bean>
+
+    <bean id="tagController" class="com.sharefun.controller.TagController">
+        <property name="tagDao" ref="tagDao" />
+        <property name="blogDao" ref="blogDao" />
+        <property name="userDao" ref="userDao" />
+        <property name="blogCommentDao" ref="blogCommentDao" />
     </bean>
 
     <bean id = "loginController" class = "com.sharefun.controller.LoginController">
@@ -53,7 +72,7 @@
         <property name="blogDao" ref="blogDao"/>
         <property name="tagDao"  ref="tagDao" />
         <property name="userDao" ref="userDao" />
-        <property name="picDao" ref="picDao" />
+        <property name="blogCommentDao" ref="blogCommentDao"/>
     </bean>
 </beans>
 

@@ -13,6 +13,7 @@ public class BlogTagMapper implements RowMapper<BlogTag> {
         BlogTag blogTag = new BlogTag();
         blogTag.setTagId(rs.getInt("tag_id"));
         blogTag.setTagTitle(rs.getString("tag_title"));
+        blogTag.setCreaterId(rs.getInt("creater_id"));
         return blogTag;
     }
 }

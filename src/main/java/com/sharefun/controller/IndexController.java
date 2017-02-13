@@ -1,13 +1,7 @@
 package com.sharefun.controller;
 
-import com.sharefun.dao.BlogDao;
-import com.sharefun.dao.PicDao;
-import com.sharefun.dao.TagDao;
-import com.sharefun.dao.UserDao;
-import com.sharefun.model.Blog;
-import com.sharefun.model.BlogTag;
-import com.sharefun.model.Picture;
-import com.sharefun.model.User;
+import com.sharefun.dao.*;
+import com.sharefun.model.*;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.sun.xml.internal.ws.resources.HttpserverMessages;
 import org.springframework.stereotype.Controller;
@@ -19,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +24,7 @@ public class IndexController {
     private BlogDao blogDao;
     private TagDao tagDao;
     private UserDao userDao;
-    private PicDao picDao;
+    private BlogCommentDao blogCommentDao;
 
     public void setBlogDao(BlogDao blogDao){this.blogDao = blogDao;}
 
@@ -41,42 +36,34 @@ public class IndexController {
         this.userDao = userDao;
     }
 
-    public void setPicDao(PicDao picDao) {
-        this.picDao = picDao;
+    public void setBlogCommentDao(BlogCommentDao blogCommentDao) {
+        this.blogCommentDao = blogCommentDao;
     }
-
-    //public BlogDao getBlogDao(){return blogDao;}
 
     @RequestMapping("/")
     public String getAll(HttpServletRequest request) {
         List<Blog> blogList = blogDao.getBlogs(5);
+        List<User> userList = new ArrayList<>();
+        List<Integer> numOfStarsList = new ArrayList<>();
+        List<Integer> numOfComments = new ArrayList<>();
+        for(int i=0;i<blogList.size();i++){
+            int blogId = blogList.get(i).getBlogId();
+            userList.add(i,userDao.getAuthorOfBlog(blogId));
+            numOfStarsList.add(i, blogDao.getNumOfStars(blogId));
+            int numOfCommentsForBlog = blogCommentDao.getCommentsOfBlog(blogId).size();
+            numOfComments.add(i, numOfCommentsForBlog);
+        }
         List<BlogTag> blogTags = tagDao.getTags(7);
         request.setAttribute("blogList", blogList);
         request.setAttribute("blogTags", blogTags);
+        request.setAttribute("userList", userList);
+        request.setAttribute("numOfComments", numOfComments);
+        request.setAttribute("numOfStarsList", numOfStarsList);
         return "index";
     }
 
-    @RequestMapping("/blog_detail")
-    public String getBlog(HttpServletRequest request){
-        int blogId = Integer.valueOf(request.getParameter("id"));
-        Blog blog = blogDao.getBlog(blogId);
-        List<BlogTag> blogTags = tagDao.getTagsOfBlog(blogId);
-        List<Picture> pictures = picDao.getPicturesOfBlog(blogId);
-        User author = userDao.getAuthorOfBlog(blogId);
-        request.setAttribute("blog", blog);
-        request.setAttribute("blogTags", blogTags);
-        request.setAttribute("author", author);
-        request.setAttribute("pictures", pictures);
-        return "blog_detail";
+    @RequestMapping("/richtext")
+    public String editor(){
+        return "richtext";
     }
-
-    @RequestMapping(value = "/markdown")
-    public String markdown(){
-        return "markdown";
-    }
-
-
-
-
-
 }

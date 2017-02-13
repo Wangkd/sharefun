@@ -9,10 +9,14 @@ import java.util.List;
 public class BlogTag {
     private int tagId;
     private String tagTitle;
+    private int createrId;
 
     public void setTagId(int tagId)     {this.tagId = tagId;}
     public void setTagTitle(String tagTitle) {
         this.tagTitle = tagTitle;
+    }
+    public void setCreaterId(int createrId) {
+        this.createrId = createrId;
     }
 
     public int getTagId() {
@@ -20,5 +24,8 @@ public class BlogTag {
     }
     public String getTagTitle() {
         return tagTitle;
+    }
+    public int getCreaterId() {
+        return createrId;
     }
 }

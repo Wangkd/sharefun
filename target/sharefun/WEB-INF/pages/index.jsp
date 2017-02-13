@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="True" name="HandheldFriendly"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TextArea</title>
+    <title>ShareFun</title>
     <meta name="viewport" content="width=device-width, maximum-scale=1.0"/>
     <meta name="description" content="TextArea.com, a place for people to read and write."/>
     <meta name="keywords" content="textarea,textarea.com,blog,博客,空间,主页,个人主页,">
@@ -57,151 +57,24 @@
 <body onload="remove()">
 <div id="wrapper">
 
-    <header id="header" class=" no-print">
-        <nav id="nav" class="clearfix">
-            <div class="pull-left">
-                <ul>
-                    <li class="navbar-brand">
-                        <p>Sharefun</p>
-                    </li>
-                    <li class="navbar-text">
-                        <p> Welcome ${user.getUserName()}</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="pull-right">
-                <ul>
-                    <li class="signin" style="display: none" id="session" value="${user.getUserName()}"></li>
-                    <li class="signin"><a href="/signin/" class="btn btn-default">Sign in</a></li>
-                    <li class="signin"><a href="/signup/" class="btn btn-primary">Sign up</a></li>
-                    <li class="userinfo"><a href="/signout" class="btn btn-primary">Sign out</a></li>
-                    <li class="userinfo"><a href="/user" class="btn btn-primary">UserInfo</a></li>
-                    <li class="userinfo"><a href="/addblog" class="btn btn-primary">Add Blog</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+<jsp:include page="header.jsp" />
+
     <div id="container">
         <main id="content">
             <div class="post summary card">
                 <div class="card-wrapper summary-tabbar clearfix">
                     <div class="tabbar-left">
-
                         <span class="active">Stuff Picks</span>
-
-
                         <a href="/popular/">Top Contents</a>
-
-
                         <a href="/?language=zh">中文</a>
-
-
-                    </div>
-                    <div class="tabbar-right">
-
-                        <a href="/signup/" class="btn btn-primary pull-right">Sign up today</a>
-                        <a href="/signin/" class="btn btn-default pull-right" style="margin-right:1em">Sign in</a>
-
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <c:forEach var="blog" items="${blogList}" >
-            <article class="post summary card typography" lang="en"
-                     itemscope itemtype="http://schema.org/Article">
 
-                <div class="card-wrapper">
-
-                    <div class="card-header no-print">
-                        <a class="avatar avatar-small" href="/foodandtrip/">
-<span style="color:white;background-color:rgb(118,164,164)">
-F
-</span>
-
-                        </a>
-
-                        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                            <a class="nickname" href="/foodandtrip/" itemprop="url">
-                                FoodAndTrip
-                            </a>
-                            <a class="username" href="/foodandtrip/">
-                                <s>@</s><span itemprop="name">foodandtrip</span>
-                            </a>
-                        </div>
-                        <div style="overflow:hidden">
-
-                            <div class="published_at">
-                                <span>Published on</span>
-                                <time class="datetime" title="March 5, 2016 at 4:43 am" datetime="2016-03-05T04:43:08"
-                                      itemprop="dateCreated datePublished">
-
-                                    <a href="/foodandtrip/the-moroccan-tea-drinking-culture-557/">March 5</a>
-
-                                </time>
-                            </div>
-
-
-                            <div class="modified_at">
-                                <span>·</span>
-                                <span>Last modified on</span>
-                                <time class="datetime" title="March 5, 2016 at 4:44 am" datetime="2016-03-05T04:44:00"
-                                      itemprop="dateModified">
-
-                                    <a href="/foodandtrip/the-moroccan-tea-drinking-culture-557/">March 5</a>
-
-                                </time>
-                            </div>
-
-
-                            <span>·</span> <span>Public</span>
-                        </div>
-                    </div>
-
-
-                    <h2 class="card-title" itemprop="name headline">
-
-                        <a href="/blog_detail?id=${blog.getBlogId()}" itemprop="url">
-                                ${blog.getBlogTitle()}
-                        </a>
-                    </h2>
-
-                    <div class="card-body" itemprop="description">
-
-
-                        <p>${blog.getBlogContent()}</p>
-
-
-                        <p><a href="/foodandtrip/the-moroccan-tea-drinking-culture-557/" class="seemore">See More</a>
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/foodandtrip/the-moroccan-tea-drinking-culture-557/">
-<span>
-
-568 reads
-</span>
-                        </a>
-                        <span>·</span>
-                        <a href="/foodandtrip/the-moroccan-tea-drinking-culture-557/">
-<span>
-
-0 stars
-</span>
-                        </a>
-                        <span>·</span>
-                        <a href="/foodandtrip/the-moroccan-tea-drinking-culture-557/">
-<span>
-
-0 comments
-</span>
-                        </a>
-                    </div>
-
-
-                </div>
-            </article>
-            </c:forEach>
+            <jsp:include page="article_card.jsp" />
         </main>
+
         <aside id="sidebar">
             <section class="card">
                 <h3>Featured Tags
@@ -209,11 +82,8 @@ F
                 </h3>
                 <div style="margin:.2em;max-height:128px;overflow:hidden;">
                     <c:forEach var="tag" items="${blogTags}" >
-
-                    <a href="/tags/306/" class="post-tag text-center">${tag.getTagTitle()}</a>
+                    <a href="/tag?tag_id=${tag.getTagId()}" class="post-tag text-center">${tag.getTagTitle()}</a>
                     </c:forEach>
-
-
                 </div>
             </section>
 

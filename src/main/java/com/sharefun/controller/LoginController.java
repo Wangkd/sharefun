@@ -44,7 +44,7 @@ public class LoginController {
         String passWord = request.getParameter("password");
         ModelAndView mav = new ModelAndView();
         if(userDao.checkUser(emailAddress,passWord)){
-            mav.addObject("user", userDao.getUser(emailAddress));
+            mav.addObject("user", userDao.getUserByEmail(emailAddress));
             mav.setViewName("redirect:/");
         }else{
             mav.addObject("error", "用户名或者密码不匹配");

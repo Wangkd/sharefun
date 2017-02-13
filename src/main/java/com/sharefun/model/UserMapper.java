@@ -13,6 +13,7 @@ public class UserMapper implements RowMapper<User> {
         user.setUserName(rs.getString("userName"));
         user.setEmailAddress(rs.getString("emailAddress"));
         user.setPassWord(rs.getString("passWord"));
+        user.setUserAvatar(rs.getString("user_avatar"));
         return user;
     }
 }

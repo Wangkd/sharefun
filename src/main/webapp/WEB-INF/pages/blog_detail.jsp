@@ -29,5 +29,21 @@
         <td><img src="<c:url value='${picture.getPicPath()}'/>"/></td>
     </tr>
 </c:forEach>
+<link href="//cdn.quilljs.com/1.1.9/quill.bubble.css" rel="stylesheet">
+<link href="https://cdn.quilljs.com/1.1.9/quill.snow.css" rel="stylesheet">
+
+<!-- Create the editor container -->
+<div id="editor">
+</div>
+
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.1.9/quill.js"></script>
+
+<!-- Initialize Quill editor -->
+<script>
+    var quill = new Quill('#editor', {
+        theme: 'snow'
+    });
+</script>
 </body>
 </html>
